@@ -8,12 +8,21 @@ import xyz.yldk.authme.Daos.UserTableRepository;
 import xyz.yldk.authme.Objects.JsonResult;
 
 @RestController
-@RequestMapping("user")
-public class UserController {
+@RequestMapping("debug/user")
+public class DebugUserController {
 
     @Autowired
     private UserTableRepository userTableRepository;
 
-
+    @RequestMapping("/getAllUser")
+    @ResponseBody
+    public JsonResult findAll() {
+        JsonResult jsonResult = new JsonResult(
+                200,
+                "OK",
+                userTableRepository.findAll()
+        );
+        return jsonResult;
+    }
 
 }
