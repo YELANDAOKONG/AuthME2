@@ -15,6 +15,7 @@ import java.util.Date;
 @Table(name = "user_password")
 public class UserPasswordTable {
 
+
     @Id
     //@GeneratedValue
     private Long uid;
@@ -48,6 +49,46 @@ public class UserPasswordTable {
     @Column(name = "salt_count")
     private Integer saltCount;
 
+    public Long getUid() {
+        return uid;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public Long getTime() {
+        return time;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public String getSaltFront() {
+        return saltFront;
+    }
+
+    public String getSaltMiddle() {
+        return saltMiddle;
+    }
+
+    public String getSaltBack() {
+        return saltBack;
+    }
+
+    public Integer getSaltOffsetValue() {
+        return saltOffsetValue;
+    }
+
+    public Integer getSaltCount() {
+        return saltCount;
+    }
+
     public UserPasswordTable(){
         super();
     }
@@ -65,6 +106,8 @@ public class UserPasswordTable {
         this.saltOffsetValue = saltOffsetValue;
         this.saltCount = saltCount;
     }
+
+
 
     public UserPasswordTable(Long uid, String password, Integer type) {
         this.uid = uid;

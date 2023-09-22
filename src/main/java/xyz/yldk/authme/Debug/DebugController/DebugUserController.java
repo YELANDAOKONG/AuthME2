@@ -10,6 +10,7 @@ import xyz.yldk.authme.Daos.UserTableRepository;
 import xyz.yldk.authme.Entities.UserPasswordTable;
 import xyz.yldk.authme.Entities.UserTable;
 import xyz.yldk.authme.Objects.JsonResult;
+import xyz.yldk.authme.Utils.PasswordUtils;
 
 @RestController
 @RequestMapping("debug/user")
@@ -59,6 +60,29 @@ public class DebugUserController {
                 userTableRepository.findByUid(personId)
         );
         return jsonResult;
+    }
+
+
+    @RequestMapping("/testPwd2")
+    @ResponseBody
+    public JsonResult testPwd2(@RequestParam("uid") Long personId, @RequestParam("pwd") String pwd) {
+        UserPasswordTable upt = userPasswordTableRepository.findByUid(personId);
+        if(upt == null){
+            JsonResult jsonResult = new JsonResult(
+                    403,
+                    "UID Not Found",
+                    null
+            );
+            return jsonResult;
+        }
+
+        JsonResult jsonResult = new JsonResult(
+                200,
+                "OK",
+                PasswordUtils.checkUserPassword(upt,pwd)
+        );
+        return jsonResult;
+
     }
 
     @RequestMapping("/runtimeError")
