@@ -3,7 +3,7 @@ package xyz.yldk.authme;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"xyz.yldk.authme"})
 public class AuthMeApplication {
 
     public static void main(String[] args) {
