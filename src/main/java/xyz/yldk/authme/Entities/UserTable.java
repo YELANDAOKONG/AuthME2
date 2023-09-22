@@ -1,16 +1,18 @@
 package xyz.yldk.authme.Entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.io.Serializable;
 
+@Data
 @Entity
 @Table(name = "user")
 public class UserTable implements Serializable {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long uid;
 
     @Column(name = "email")
     private String email;
@@ -30,12 +32,12 @@ public class UserTable implements Serializable {
 
 
 
-    public Long getId() {
-        return id;
+    public Long getUid() {
+        return uid;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUid(Long id) {
+        this.uid = id;
     }
 
 
