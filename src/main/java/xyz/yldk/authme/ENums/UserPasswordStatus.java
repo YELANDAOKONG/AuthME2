@@ -2,12 +2,11 @@ package xyz.yldk.authme.ENums;
 
 import java.io.Serializable;
 
-public enum UserStatus implements Serializable {
+public enum UserPasswordStatus implements Serializable {
     UNKNOWN(-1),
     NORMAL(0),
-    BANNED(1),
-    DELETED(2),
-    PROTECTED(3)
+    EXPIRED(1),
+
 
 
     ;
@@ -15,13 +14,12 @@ public enum UserStatus implements Serializable {
 
 
     private int value;
-    UserStatus(int value) {
+    UserPasswordStatus(int value) {
         this.value = value;
     }
 
     public int getStatus() {
         return value;
     }
-
 
 }

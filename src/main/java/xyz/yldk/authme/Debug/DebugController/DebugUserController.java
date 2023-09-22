@@ -5,7 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import xyz.yldk.authme.Daos.UserPasswordTableRepository;
 import xyz.yldk.authme.Daos.UserTableRepository;
+import xyz.yldk.authme.Entities.UserPasswordTable;
 import xyz.yldk.authme.Entities.UserTable;
 import xyz.yldk.authme.Objects.JsonResult;
 
@@ -15,6 +17,8 @@ public class DebugUserController {
 
     @Autowired
     private UserTableRepository userTableRepository;
+    @Autowired
+    private UserPasswordTableRepository userPasswordTableRepository;
 
     @RequestMapping("/getAllUser")
     @ResponseBody
@@ -30,6 +34,25 @@ public class DebugUserController {
     @RequestMapping("/findUser")
     @ResponseBody
     public JsonResult findAll(@RequestParam("uid") Long personId) {
+        JsonResult jsonResult = new JsonResult(
+                200,
+                "OK",
+                userTableRepository.findByUid(personId)
+        );
+        return jsonResult;
+    }
+
+    @RequestMapping("/testPwd1")
+    @ResponseBody
+    public JsonResult testPwd1(@RequestParam("uid") Long personId, @RequestParam("pwd") String pwd,
+                               @RequestParam("type") Integer type) {
+        userPasswordTableRepository.save(
+                new UserPasswordTable(
+                        personId,
+                        pwd,
+                        type
+                )
+        );
         JsonResult jsonResult = new JsonResult(
                 200,
                 "OK",
