@@ -11,4 +11,5 @@ public interface UserTableRepository extends JpaRepository<UserTable, Long> {
     List<UserTable> findByEmail(String email);
 
 
+
 }

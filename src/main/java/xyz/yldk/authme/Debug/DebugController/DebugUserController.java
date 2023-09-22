@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import xyz.yldk.authme.Daos.UserTableRepository;
+import xyz.yldk.authme.Entities.UserTable;
 import xyz.yldk.authme.Objects.JsonResult;
 
 @RestController
@@ -47,6 +48,24 @@ public class DebugUserController {
         );
         throw new RuntimeException("Runtime error");
         //return jsonResult;
+    }
+
+    @RequestMapping("/newUser")
+    @ResponseBody
+    public JsonResult newUser(@RequestParam(value = "email", required = false, defaultValue = "test@test.cn")
+                                  String email) {
+        userTableRepository.save(
+                new UserTable(
+                        email,
+                        0
+                )
+        );
+        JsonResult jsonResult = new JsonResult(
+                200,
+                "OK",
+                null
+        );
+        return jsonResult;
     }
 
 }
