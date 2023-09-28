@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import xyz.yldk.authme.Daos.EMailCodeTableRepository;
 import xyz.yldk.authme.Daos.UserPasswordTableRepository;
 import xyz.yldk.authme.Daos.UserTableRepository;
 import xyz.yldk.authme.Entities.UserPasswordTable;
@@ -20,6 +21,8 @@ public class DebugUserController {
     private UserTableRepository userTableRepository;
     @Autowired
     private UserPasswordTableRepository userPasswordTableRepository;
+    @Autowired
+    private EMailCodeTableRepository userEmailCodeTableRepository;
 
     @RequestMapping("/getAllUser")
     @ResponseBody
